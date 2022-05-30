@@ -3,7 +3,7 @@ from datetime import datetime
 import factory, factory.fuzzy, string
 from factory.django import DjangoModelFactory
 
-class Person(DjangoModelFactory):
+class PersonFactory(DjangoModelFactory):
     
     # Factory-boy wybierze nazwe użytkownika oraz 
     # imie i nazwisko oraz hasło przy użyciu modułu Faker
@@ -14,7 +14,7 @@ class Person(DjangoModelFactory):
     birthdate = factory.fuzzy.FuzzyDate(datetime.date(1980, 1, 1), datetime.date(2003, 1,1))
 
 
-class Users(DjangoModelFactory):
+class UsersFactory(DjangoModelFactory):
 
     person = factory.SubFactory(Person)
     hireDate = factory.fuzzy.FuzzyDate(datetime.date(1998, 1, 1), datetime.date(2003, 1,1))
