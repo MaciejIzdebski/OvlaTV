@@ -1,2 +1,2 @@
-import mysite.settings
+from mysite.settings import *
 
