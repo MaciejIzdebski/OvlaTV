@@ -2,6 +2,7 @@ from re import T
 from statistics import mode
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import CharField
 
 # Create your models here.
 
@@ -29,3 +30,21 @@ class Employee(models.Model):
     hire_date = models.DateField(auto_now=True)
     fire_date = models.DateField(null=True)
     
+class Client(models.Model):
+    clientID = models.ForeignKey
+
+class Telephones(models.Model):
+    telephone = models.CharField(max_length=11) # +3 cyfry kierunkowego
+
+class Users(models.Model):
+    hireDate = models.DateField
+    password = CharField(min_length=8)
+    username = CharField
+
+class PermissionGroup(models.Model):
+    name = models.CharField
+
+class Addressess(models.Model):
+    street = models.CharField(max_length=75)
+    houseNumber = models.CharField(max_length=250)
+    apartamentNumber = models.CharField(max_length=5)

@@ -7,4 +7,10 @@ class ServiceLocation (models.Model):
     numer_domu = models.CharField(max_length=10);
     max_przepustowosc = models.DecimalField;
 
+class Services (models.Model):
+    nazwa = models.CharField(max_length=250)
+    cena_za_mc = models.FloatField()
 
+class  Contracts (models.Model):
+    dateOfCreation = models.DateField
+    # service = models.
