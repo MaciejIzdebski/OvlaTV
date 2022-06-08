@@ -1,3 +1,4 @@
+from http import client
 from re import T
 from statistics import mode
 from django.db import models
@@ -23,6 +24,7 @@ class Address(models.Model):
     street = models.CharField(max_length=100)
     house = models.CharField(max_length=10)
     apartmentNumber = models.CharField(max_length=5)
+    person = models.ForeignKey(Person, on_delete=models.DO_NOTHING)
 
 class Employee(models.Model):
     person = models.ForeignKey(Person, on_delete=models.DO_NOTHING)
@@ -31,20 +33,8 @@ class Employee(models.Model):
     fire_date = models.DateField(null=True)
     
 class Client(models.Model):
-    clientID = models.ForeignKey
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
 
 class Telephones(models.Model):
     telephone = models.CharField(max_length=11) # +3 cyfry kierunkowego
-
-class Users(models.Model):
-    hireDate = models.DateField
-    password = CharField(min_length=8)
-    username = CharField
-
-class PermissionGroup(models.Model):
-    name = models.CharField
-
-class Addressess(models.Model):
-    street = models.CharField(max_length=75)
-    houseNumber = models.CharField(max_length=250)
-    apartamentNumber = models.CharField(max_length=5)
+    person = models.ForeignKey(Person, on_delete=models.DO_NOTHING)
