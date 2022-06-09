@@ -11,7 +11,7 @@ from users.models import Client
 class ServiceLocation (models.Model):
     ulica = models.CharField(max_length=75)
     numer_domu = models.CharField(max_length=10)
-    max_przepustowosc = models.DecimalField()
+    max_przepustowosc = models.PositiveIntegerField()
 
 class Offers (models.Model):
     client = models.ForeignKey(Client, on_delete=models.DO_NOTHING)
