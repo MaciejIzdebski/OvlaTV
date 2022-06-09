@@ -44,3 +44,7 @@ class PersonAdmin(admin.ModelAdmin):
 # Re-register UserAdmin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+admin.site.register(Employee)
+admin.site.register(Client)
+admin.site.register(Telephones)
+admin.site.register(Address)
