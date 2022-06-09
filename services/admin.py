@@ -1,3 +1,8 @@
+import imp
 from django.contrib import admin
+from services.models import*
 
-# Register your models here.
+
+admin.site.register(ServiceLocation)
+admin.site.register(Offers)
+admin.site.register(Contracts)
