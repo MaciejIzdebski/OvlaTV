@@ -22,6 +22,11 @@ class AddressInline(admin.TabularInline):
     verbose_name_plural = 'adresses'
     extra = 1
 
+class TelephonesInline(admin.TabularInline):
+    model = Telephones
+    verbose_name_plural = 'telephones'
+    extra = 1
+
 class EmployeeInline(admin.StackedInline):
     model = Employee
     can_delete = False
@@ -31,9 +36,10 @@ class EmployeeInline(admin.StackedInline):
 class UserAdmin(BaseUserAdmin):
     inlines = (EmployeeInline,)
 
+
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
-    inlines = (AddressInline,)
+    inlines = (AddressInline,TelephonesInline)
 
 # Re-register UserAdmin
 admin.site.unregister(User)
