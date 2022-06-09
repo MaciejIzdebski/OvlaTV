@@ -23,8 +23,7 @@ class AddressInline(admin.TabularInline):
     extra = 1
 
 class TelephonesInline(admin.TabularInline):
-    model = Telephones
-    verbose_name_plural = 'telephones'
+    model = Telephone
     extra = 1
 
 class EmployeeInline(admin.StackedInline):
@@ -46,5 +45,5 @@ admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Employee)
 admin.site.register(Client)
-admin.site.register(Telephones)
+admin.site.register(Telephone)
 admin.site.register(Address)

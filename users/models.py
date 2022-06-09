@@ -25,6 +25,8 @@ class Address(models.Model):
     house = models.CharField(max_length=10)
     apartmentNumber = models.CharField(max_length=5)
     person = models.ForeignKey(Person, on_delete=models.DO_NOTHING)
+    class Meta:
+        verbose_name_plural = 'addresses'
 
 class Employee(models.Model):
     person = models.ForeignKey(Person, on_delete=models.DO_NOTHING)
@@ -35,6 +37,6 @@ class Employee(models.Model):
 class Client(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
 
-class Telephones(models.Model):
+class Telephone(models.Model):
     telephone = models.CharField(max_length=11) # +3 cyfry kierunkowego
     person = models.ForeignKey(Person, on_delete=models.DO_NOTHING)

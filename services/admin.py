@@ -4,5 +4,5 @@ from services.models import*
 
 
 admin.site.register(ServiceLocation)
-admin.site.register(Offers)
-admin.site.register(Contracts)
+admin.site.register(Offer)
+admin.site.register(Contract)

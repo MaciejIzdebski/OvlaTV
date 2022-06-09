@@ -13,14 +13,14 @@ class ServiceLocation (models.Model):
     numer_domu = models.CharField(max_length=10)
     max_przepustowosc = models.PositiveIntegerField()
 
-class Offers (models.Model):
+class Offer (models.Model):
     client = models.ForeignKey(Client, on_delete=models.DO_NOTHING)
     nazwa = models.CharField(max_length=250)
     cena_za_mc = models.FloatField()
 
-class  Contracts (models.Model):
+class  Contract (models.Model):
     client = models.ForeignKey(Client, on_delete=models.DO_NOTHING)
-    offers = models.ManyToManyField(Offers)
+    offers = models.ManyToManyField(Offer)
     dateOfCreation = models.DateField(auto_now=True)
     dateOfSigning = models.DateField()
     # service = models
