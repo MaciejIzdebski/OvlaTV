@@ -23,4 +23,7 @@ class  Contract (models.Model):
     offers = models.ManyToManyField(Offer)
     dateOfCreation = models.DateField(auto_now=True)
     dateOfSigning = models.DateField()
-    # service = models
+
+class Debt (models.Model):
+    receivable = models.IntegerField()
+    date = models.DateField()
