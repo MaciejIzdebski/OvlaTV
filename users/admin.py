@@ -31,9 +31,19 @@ class EmployeeInline(admin.StackedInline):
     can_delete = False
     verbose_name_plural = 'employee'
 
+class PersonInline(admin.StackedInline):
+    model = Person
+    can_delete = False
+    verbose_name_plural = 'person'
+    fk_name = 'client'
+
+
 # Define a new User admin
 class UserAdmin(BaseUserAdmin):
     inlines = (EmployeeInline,)
+
+class ClientAdmin(admin.ModelAdmin):
+    inlines = (PersonInline,)
 
 
 @admin.register(Person)
@@ -44,6 +54,6 @@ class PersonAdmin(admin.ModelAdmin):
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Employee)
-admin.site.register(Client)
+admin.site.register(Client,ClientAdmin)
 admin.site.register(Telephone)
 admin.site.register(Address)
