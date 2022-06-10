@@ -17,6 +17,7 @@ class Offer (models.Model):
     client = models.ForeignKey(Client, on_delete=models.DO_NOTHING)
     nazwa = models.CharField(max_length=250)
     cena_za_mc = models.FloatField()
+    description = models.TextField(null=True)
 
 class  Contract (models.Model):
     client = models.ForeignKey(Client, on_delete=models.DO_NOTHING)
