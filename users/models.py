@@ -1,12 +1,15 @@
 from http import client
 from re import T
 from statistics import mode
+from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import CharField
 from pyparsing import null_debug_action
 
 # Create your models here.
+class Client(models.Model):
+    email = models.EmailField(null=True)
 
 class Person(models.Model):
     GENDER_TYPES = [
@@ -20,6 +23,7 @@ class Person(models.Model):
     gender = models.CharField(max_length=1, choices=GENDER_TYPES, null=True)
     id_card_number = models.CharField(max_length=9, null=True)
     id_card_scan = models.ImageField(null=True)
+    client = models.OneToOneField(Client, on_delete=models.CASCADE, null=True)
 
 
 class Address(models.Model):
@@ -37,9 +41,6 @@ class Employee(models.Model):
     hire_date = models.DateField(auto_now=True)
     fire_date = models.DateField(null=True)
     
-class Client(models.Model):
-    person = models.ForeignKey(Person, on_delete=models.CASCADE)
-    email = models.EmailField
 
 class Telephone(models.Model):
     telephone = models.CharField(max_length=11) # +3 cyfry kierunkowego
