@@ -49,11 +49,13 @@ class UserAdmin(BaseUserAdmin):
 
 class ClientAdmin(admin.ModelAdmin):
     inlines = (PersonInline, ContractInline)
+    search_fields = ('pk',)
 
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
     inlines = (AddressInline,TelephonesInline)
+    search_fields = ('pesel',)
 
 # Re-register UserAdmin
 admin.site.unregister(User)
