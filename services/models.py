@@ -14,16 +14,21 @@ class ServiceLocation (models.Model):
     max_przepustowosc = models.PositiveIntegerField()
 
 class Offer (models.Model):
-    client = models.ForeignKey(Client, on_delete=models.DO_NOTHING)
     nazwa = models.CharField(max_length=250)
     cena_za_mc = models.FloatField()
     description = models.TextField(null=True)
+
+    def __str__(self) -> str:
+        return self.nazwa
 
 class  Contract (models.Model):
     client = models.ForeignKey(Client, on_delete=models.DO_NOTHING)
     offers = models.ManyToManyField(Offer)
     dateOfCreation = models.DateField(auto_now=True)
     dateOfSigning = models.DateField()
+
+    def __str__(self):
+        return str(self.pk) + str(self.dateOfSigning)
 
 class Debt (models.Model):
     receivable = models.IntegerField()
