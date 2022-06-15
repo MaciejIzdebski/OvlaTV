@@ -7,6 +7,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 
 from users.models import *
+from services.models import Contract
 
 # Define an inline admin descriptor for Employee model
 # which acts a bit like a singleton
@@ -20,11 +21,15 @@ class PersonForm(ModelForm):
 class AddressInline(admin.TabularInline):
     model = Address
     verbose_name_plural = 'adresses'
-    extra = 1
+    extra = 0
 
 class TelephonesInline(admin.TabularInline):
     model = Telephone
-    extra = 1
+    extra = 0
+
+class ContractInline(admin.StackedInline):
+    model = Contract
+    extra = 0
 
 class EmployeeInline(admin.StackedInline):
     model = Employee
@@ -43,12 +48,14 @@ class UserAdmin(BaseUserAdmin):
     inlines = (EmployeeInline,)
 
 class ClientAdmin(admin.ModelAdmin):
-    inlines = (PersonInline,)
+    inlines = (PersonInline, ContractInline)
+    search_fields = ('pk',)
 
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
     inlines = (AddressInline,TelephonesInline)
+    search_fields = ('pesel',)
 
 # Re-register UserAdmin
 admin.site.unregister(User)
