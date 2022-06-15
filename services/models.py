@@ -13,6 +13,9 @@ class ServiceLocation (models.Model):
     numer_domu = models.CharField(max_length=10)
     max_przepustowosc = models.PositiveIntegerField()
 
+    def __str__(self) -> str:
+        return self.ulica
+
 class Offer (models.Model):
     nazwa = models.CharField(max_length=250)
     cena_za_mc = models.FloatField()
@@ -28,7 +31,7 @@ class  Contract (models.Model):
     dateOfSigning = models.DateField()
 
     def __str__(self):
-        return str(self.pk) + str(self.dateOfSigning)
+        return str(self.pk) + '/' + str(self.dateOfSigning)
 
 class Debt (models.Model):
     receivable = models.IntegerField()
