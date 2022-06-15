@@ -51,7 +51,6 @@ class ClientAdmin(admin.ModelAdmin):
     inlines = (PersonInline, ContractInline)
     search_fields = ('pk',)
 
-
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
     inlines = (AddressInline,TelephonesInline)
