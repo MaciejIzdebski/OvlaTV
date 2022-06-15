@@ -1,6 +1,7 @@
 from http import client
 from re import T
 from statistics import mode
+from sys import maxsize
 from tkinter import CASCADE
 from tokenize import blank_re
 from django.db import models
@@ -12,10 +13,17 @@ from pyparsing import null_debug_action
 class Client(models.Model):
     email = models.EmailField(null=True)
 
+    def __str__(self) -> str:
+        return self.person.pesel
+
+    @property
+    def pesel(self):
+        return self.person.pesel
+
 class Person(models.Model):
     GENDER_TYPES = [
         ('F', 'Kobieta'),
-        ('M', 'Męszczyzna')
+        ('M', 'Mężczyzna')
     ]
     pesel = models.CharField(max_length=11, null=True)
     first_name = models.CharField(max_length=40, default='')
@@ -25,6 +33,9 @@ class Person(models.Model):
     id_card_number = models.CharField(max_length=9, null=True)
     id_card_scan = models.ImageField(null=True)
     client = models.OneToOneField(Client, on_delete=models.CASCADE, null=True)
+
+    def __str__(self) -> str:
+        return self.pesel
 
 
 class Address(models.Model):
@@ -36,6 +47,9 @@ class Address(models.Model):
     class Meta:
         verbose_name_plural = 'addresses'
 
+    def __str__(self) -> str:
+        return self.person.pesel
+
 class Employee(models.Model):
     person = models.ForeignKey(Person, on_delete=models.DO_NOTHING)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
@@ -46,3 +60,6 @@ class Employee(models.Model):
 class Telephone(models.Model):
     telephone = models.CharField(max_length=11) # +3 cyfry kierunkowego
     person = models.ForeignKey(Person, on_delete=models.DO_NOTHING)
+
+    def __str__(self) -> str:
+        return self.person.pesel
