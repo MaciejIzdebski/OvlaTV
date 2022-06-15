@@ -17,7 +17,7 @@ class Person(models.Model):
         ('F', 'Kobieta'),
         ('M', 'Męszczyzna')
     ]
-    pesel = models.TextField(max_length=11, null=True)
+    pesel = models.CharField(max_length=11, null=True)
     first_name = models.CharField(max_length=40, default='')
     last_name = models.CharField(max_length=100, default='')
     birth_date = models.DateField(null=True)
