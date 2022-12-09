@@ -14,7 +14,7 @@ class Client(models.Model):
     email = models.EmailField(null=True)
 
     def __str__(self) -> str:
-        return self.pk
+        return str(self.pk)
 
     @property
     def pesel(self):
