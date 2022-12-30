@@ -20,11 +20,11 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 
-router.register('telephones', views.TelephoneViewSet)
-router.register('clients', views.ClientViewSet)
-router.register('persons', views.PersonViewSet)
-router.register('addresses', views.AddressViewSet)
-router.register('employees', views.EmployeeViewSet)
+router.register(r'telephones', views.TelephoneViewSet)
+router.register(r'clients', views.ClientViewSet)
+router.register(r'persons', views.PersonViewSet)
+router.register(r'addresses', views.AddressViewSet)
+router.register(r'employees', views.EmployeeViewSet)
 
 urlpatterns = [
     path('api/v1/', include(router.urls)),
