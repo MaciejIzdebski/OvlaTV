@@ -15,16 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from users import views
+from users import views as UsersViews
+from services import views as ServicesViews
 from rest_framework import routers
 
 router = routers.DefaultRouter()
 
-router.register(r'telephones', views.TelephoneViewSet)
-router.register(r'clients', views.ClientViewSet)
-router.register(r'persons', views.PersonViewSet)
-router.register(r'addresses', views.AddressViewSet)
-router.register(r'employees', views.EmployeeViewSet)
+router.register(r'telephones', UsersViews.TelephoneViewSet)
+router.register(r'clients', UsersViews.ClientViewSet)
+router.register(r'persons', UsersViews.PersonViewSet)
+router.register(r'addresses', UsersViews.AddressViewSet)
+router.register(r'employees', UsersViews.EmployeeViewSet)
+router.register(r'servicelocations', ServicesViews.ServiceLocationViewSet)
+router.register(r'offers', ServicesViews.OfferViewSet)
+router.register(r'contracts', ServicesViews.ContractViewSet)
+router.register(r'debts', ServicesViews.DebtViewSet)
 
 urlpatterns = [
     path('api/v1/', include(router.urls)),
