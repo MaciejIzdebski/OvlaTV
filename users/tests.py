@@ -7,3 +7,4 @@ import pytest
 @pytest.mark.django_db
 def test_get_data_as_anonymouse_user():
     pass
+
