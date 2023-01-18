@@ -43,7 +43,6 @@ class Address(models.Model):
     street = models.CharField(max_length=100)
     house = models.CharField(max_length=10)
     apartmentNumber = models.CharField(max_length=5)
-    person = models.ForeignKey(Person, on_delete=models.DO_NOTHING)
     class Meta:
         verbose_name_plural = 'addresses'
 
