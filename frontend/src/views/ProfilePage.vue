@@ -25,27 +25,33 @@
                 <VCardText>Internet + TV + Telefon</VCardText>
             </VCard>
         </VCardText>
-        
     </VCard>
     
 </template>
 
 <script setup>
 import { inject, ref } from 'vue'
+import { useAppStore } from '@/store/app';
+
 
 let person = ref(null);
 let telephones = ref([]);
 let addresses = ref([]);
+let offers = ref([]);
 let $axios = inject('axios')
+let user_id = useAppStore().user_id
 
-$axios.get("/api/v1/persons/1/")
+$axios.get(`/api/v1/persons/${user_id}/`)
       .then((val) => person.value = val.data)
-$axios.get("/api/v1/telephones/")
+$axios.get(`/api/v1/telephones/`)
       .then((val) => telephones.value = val.data.results, 
-          () => telephones.value = []).then((val) => console.log(val))
-$axios.get("/api/v1/addresses/")
+            () => telephones.value = []).then((val) => console.log(val))
+$axios.get(`/api/v1/addresses/`)
       .then((val) => addresses.value = val.data.results, 
-          () => addresses.value = []).then((val) => console.log(val))
+            () => addresses.value = []).then((val) => console.log(val))
+$axios.get(`/api/v1/offers/`)
+      .then((val) => offers.value = val.data.results, 
+            () => offers.value = []).then((val) => console.log(val))
 
 function formatAddress( { street, house, apartmentNumber }){
     return `${street} ${house}/${apartmentNumber}`

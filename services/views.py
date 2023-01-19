@@ -15,10 +15,18 @@ class OfferViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = serializers.OfferSerializer
     permission_classes = [permissions.AllowAny]
 
+    def get_queryset(self):
+        offers = models.Offer.objects.filter(pk=1)
+        return offers   
+
 class ContractViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Contract.objects.all()
     serializer_class = serializers.ContractSerializer
     permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        contracts = models.Contract.objects.filter(pk=1)
+        return contracts  
 
 class DebtViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Debt.objects.all()

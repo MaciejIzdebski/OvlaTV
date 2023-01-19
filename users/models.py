@@ -1,9 +1,6 @@
 from http import client
 from re import T
 from statistics import mode
-from sys import maxsize
-from tkinter import CASCADE
-from tokenize import blank_re
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import CharField
@@ -12,9 +9,10 @@ from pyparsing import null_debug_action
 # Create your models here.
 class Client(models.Model):
     email = models.EmailField(null=True)
+    user = models.OneToOneField(User, on_delete=models.DO_NOTHING, null=True)
 
     def __str__(self) -> str:
-        return str(self.pk)
+        return str(self.pk) 
 
     @property
     def pesel(self):
